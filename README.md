@@ -6,7 +6,13 @@ lsd
 bat
 git
 zsh
+oh-my-zsh
 iterm2
+```
+
+## customization
+```
+zsh theme - powerlevel10k
 ```
 
 ## specialized
