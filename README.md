@@ -5,6 +5,7 @@
 lsd
 bat
 git
+zsh
 iterm2
 ```
 
