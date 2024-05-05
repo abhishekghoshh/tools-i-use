@@ -24,3 +24,11 @@
 
 ## Zellij
 - [zellij](https://zellij.dev/)
+
+
+
+## setup of tmux
+```
+
+
+```

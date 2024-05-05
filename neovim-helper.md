@@ -20,6 +20,7 @@ docker run -it --rm -v $(pwd):/mnt busybox vi /mnt/vim-motion-practice.txt
       - [10 Advanced Vim Features (You Probably Didn't Know)](https://www.youtube.com/watch?v=gccGjwTZA7k)
     - [Vim As Your Editor](https://www.youtube.com/playlist?list=PLm323Lc7iSW_wuxqmKx_xxNtJC_hJbQ7R)
     - [Vim Tutorial for Beginners](https://www.youtube.com/watch?v=RZ4p-saaQkc)
+    - [30 Vim commands you NEED TO KNOW (in just 10 minutes)](https://www.youtube.com/watch?v=RSlrxE21l_k)
   
 
 - **neovim introduction**
@@ -35,7 +36,8 @@ docker run -it --rm -v $(pwd):/mnt busybox vi /mnt/vim-motion-practice.txt
 - **all neovim configuration**
     - [Learn Neovim The Practical Way](https://alpha2phi.medium.com/learn-neovim-the-practical-way-8818fcf4830f#545a)
 
-- **Neovim tutorial series** 
+- **Neovim tutorial series**
+  - [Teaching Neovim From Scratch To A Noob](https://www.youtube.com/watch?v=-ybCiHPWKNA)
 	- [Neovim from Scratch](https://www.youtube.com/playlist?list=PLhoH5vyxr6Qq41NFL4GvhFp-WLd5xzIzZ)
 	- [Neovim for Newbs. FREE NEOVIM COURSE](https://www.youtube.com/playlist?list=PLsz00TDipIffreIaUNk64KxTIkQaGguqn)
 	- [Neovim Configuration](https://www.youtube.com/playlist?list=PLsz00TDipIffxsNXSkskknolKShdbcALR)
@@ -76,31 +78,112 @@ source ~/.zshrc
 - [NeoVim with NVChad | The most beautiful editor for programming.](https://www.youtube.com/watch?v=Irm2WELYSps)
 - [Official documentation](https://nvchad.com/docs/quickstart/install)
 - [nvchad github](https://github.com/NvChad/NvChad)
-- configs present in `~/.config/nvim/lua/custom`
+- 
 
 - **Shortcuts**
+  - Use the Ctrl-^ or (Ctrl-6) shortcut to navigate back to the previously opened file stored in a buffer
+  - leader key is space by default
   - space + c + h for cheetsheet opening and closing
-  - Space -> t -> h (setting themes) [option + control + p/n ]
-  - Syntax highlighting [TSInstall #laungage_name] [TSInstallInfo]
+  - only type space bar + wait for 2 sec it, it will suggest some next commands to type
+  - Space + t + h (setting themes) [ctrl + p/n for going to previous and next option ]
+  - Syntax highlighting [TSInstall #laungage_name] [:TSInstallInfo to check which language syntax highlighting s are installed]
+  - Install all packages with mason (:MasonInstallAll)
+  - :help lspconfig-all
   - File explorer [cntrl + n] 
-  - m for bookmarking
-  - a for adding new file
-  - c for copy and p for paste
-  - file navigation space + f + f
-  - space + f + b for find only opened files
-  - Window navigation [ ctrl + h / j / k / l ]
-  - Window management [vertical split (:vsp)  split (:sp)] 
-  - Tab change (tab) (shift + tab) and close tab ( space + x )
+    - m for bookmarking
+    - a for adding new file
+    - c for copy and p for paste file
+    - r for renaming a file
+    - d for deleting file
+    - file navigation ina fuzzy finder (space + ff)
+    - space + f + b for find only opened files
+  - window management
+    - Window navigation [ ctrl + h / j / k / l ]
+    - Window management [vertical split (:vsp)  split (:sp)] 
+    - Tab change (tab) (shift + tab) and close tab ( space + x )
   - Toggle line number [ space + n ]
-  - Command line 
+  - open terminal
     - Horizontal ( space + h )
     - vertical ( space + v )
-    - to get out of terminal or jump to other windows from terminal
-      - ctrl-x then ctrl-ww
-  - fuzzy finder
-    - <leader>/space + ff
-  - Install all packages with mason
-    - :MasonInstallAll
+    - to get out of terminal or jump to other windows from terminal (ctrl-x then ctrl-ww)
+
+- **customization**
+  - neovim configs present in `~/.config/nvim/lua/custom`
+    - if you want to change config, plugins and options for neovim chad then change configuration in chadrc.lua
+    - id you want to change config, option and commands for neovim only then change configuration in init.lua
+
+### Golang config for neovim
+```
+Sample go neovim config that I am reffering https://github.com/dreamsofcode-io/neovim-go-config/tree/main
+1. Download an lsp server for go (gopls is the official)
+  download it with either mason or go get
+  add configs
+
+2. Autoformatting on save
+  we can either use gopls or use null-ls plugin
+  we have null-ls.lua config file where we have added all the formatting related configs
+  we have used gofumpt,goimports_reviser, and golines, but we have to install these using go get package name
+  go install -v github.com/incu6us/goimports-reviser/v3@latest
+  go install github.com/segmentio/golines@latest
+
+  now we have formatting setup and we can call it by (:lua vim.lsp.buf.format())
+  but it is hectic to run everytime, so we can turn autoformat on save
+
+  null-ls is having some issues in my local so I have used normal gopls for setting autoformatting
+
+3. now we will setup delve (go install github.com/go-delve/delve/cmd/dlv)
+    if delve is unrecognized then use the following line
+      export PATH=$PATH:~/go/bin/dlv
+      export PATH=$PATH:$(go env GOPATH)/bin
+      ~/go/bin/dlv version
+  Along with delve we need neovim dap (debug adapter protocoll) we will use nvim-dap-go plugin for that
+  to install go grammar for neovim Treesitter use (:TSInstall go)
+    <space> + db for debug point
+    <space> + du for debug ui
+    <space> + dgt for running test
+    <space> + dgl for running last test
+    :DapStepOver for going to next line
+    :DapContinue for go to the next debug point
+
+4. for extra capabilities we use gopher.nvim (https://github.com/olexsmir/gopher.nvim)
+    nvim-dap is required
+  see the link for more shortcut
+    :GoTagAdd json " For add json tag
+    :GoTagRm yaml " For remove yaml tag
+
+    :GoMod tidy " Runs `go mod tidy`
+    :GoMod init asdf " Runs `go mod init asdf`
+    :GoGet github.com/gorilla/mux
+
+    :GoImpl [receiver] [interface]
+    " Also you can put cursor on the struct and run:
+    :GoImpl [interface]
+
+    " Example
+    :GoImpl r Read io.Reader
+    " or simply put your cursor in the struct and run:
+    :GoImpl io.Reader
+
+    :GoTestAdd
+    :GoTestsAll
+    :GoTestsExp
+
+    " Run `go generate` in cwd path
+    :GoGenerate
+    " Run `go generate` for current file
+    :GoGenerate %
+
+    Generate doc comment
+    First set a cursor on public package/function/interface/struct and execute:
+    :GoCmt
+
+    :GoIfErr
+
+
+
+
+```
+
 
 
 
@@ -126,22 +209,22 @@ source ~/.zshrc
 (shift + j) => remove empty lines and append the start of the next line to the end of the current line 
 
 
-(shift + left arrow) go to the starting of the next word
-(ctrl + right arrow) go to the starting of the previous word
-
+(shift + left arrow) go to the starting of the previous word
+(shift + right arrow) go to the starting of the next word
 
 (shift + down arrow) go the ending line of the current page
 (shift + up arrow) go the starting line of the current page
 
 
 #### Jump between lines
-Press ( or (shift + 9) to go to the start of next line
-press ) or (shift + 0) to go to the start of previous line
+Press ( or (shift + 9) to go to the start of previous line
+press ) or (shift + 0) to go to the start of next line
 
 
 #### Jump between paragraphs
-Press { or (shift + [ ) to go to the start of next empty line
 Press } or (shift + ] ) to go to the start of previous empty line
+Press { or (shift + [ ) to go to the start of next empty line
+
 
 Press [ to go to the start of the first line
 Press ] to go to the start of the last line
@@ -160,69 +243,28 @@ ctrl + d to move a ½ page screen down.
 
 #### Command Description	
 ```
-
-# Insert at cursor (goes into insert mode)
-i
-
-# Write after cursor (goes into insert mode)
-a
-
-# Write at the end of line (goes into insert mode)
-A
-
-# Terminate insert mode
-ESC	
-
-# Undo last change
-u
-
-# Undo all changes to the entire line
-U
-
-# Open a new line (goes into insert mode)
-o
-
-# Delete line
-dd
-
-# Delete 3 lines
-3dd
-
-# Delete contents of line after the cursor
-D
-
-# Delete contents of a line after the cursor and insert new text. Press ESC key to end insertion.
-C
-
-# Delete word
-dw
-
-# Delete 4 words
-4dw
-
-# Change word
-cw
-
-# Delete character at the cursor
-x
-
-# Replace character
-r
-
-# Overwrite characters from cursor onward
-R
-
-# Substitute one character under cursor continue to insert
-s
-
-# Substitute entire line and begin to insert at the beginning of the line
-S
-
-# Change case of individual character
-~
-
+i -> Insert at cursor (goes into insert mode)
+a -> Write after cursor (goes into insert mode)
+A -> Write at the end of line (goes into insert mode)
+ESC -> Terminate insert mode
+u ->  Undo last change
+U -> Undo all changes to the entire line
+o -> Open a new line (goes into insert mode)
+d -> Delete line
+3dd -> Delete 3 lines
+D -> Delete contents of line after the cursor
+C -> Delete contents of a line after the cursor and insert new text. Press ESC key to end insertion.
+dw -> Delete word
+4dw -> Delete 4 words
+cw -> Change word
+x -> Delete character at the cursor
+r -> Replace character
+R -> Overwrite characters from cursor onward
+s -> Substitute one character under cursor continue to insert
+S -> Substitute entire line and begin to insert at the beginning of the line
+~ -> Change case of individual character
 ```
 
 
 
-# Golang shortcuts
+
