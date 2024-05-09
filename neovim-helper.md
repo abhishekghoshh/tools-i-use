@@ -13,6 +13,7 @@ docker run -it --rm -v $(pwd):/mnt busybox vi /mnt/vim-motion-practice.txt
   	- [devhints](https://devhints.io/vim)
   	- [Vim Cheat Sheet](https://vim.rtorr.com/)
   	- [warp.dev](https://www.warp.dev/topic/vim)
+  	- [vim-hero](https://www.vim-hero.com/lessons/basic-movement)
   - **youtube**
     - [Vim Motions for absolute beginners!!!](https://www.youtube.com/watch?v=lWTzqPfy1gE)
       - [Intermediate Vim Motions and Pro Tips!!!](https://www.youtube.com/watch?v=nBjEzQlJLHE)
@@ -28,16 +29,15 @@ docker run -it --rm -v $(pwd):/mnt busybox vi /mnt/vim-motion-practice.txt
   - [Effective Neovim: Instant IDE](https://www.youtube.com/watch?v=stqUbv-5u2s)
   	- [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim)
   	- [The Only Video You Need to Get Started with Neovim](https://www.youtube.com/watch?v=m8C0Cq9Uv9o)
-  - [Why Neovim nerds are so obsessed with the terminal](https://www.youtube.com/watch?v=5wy2iLU5fs0)
-  - [How to ACTUALLY switch from VS Code to Neovim](https://www.youtube.com/watch?v=aCgDs8Nv-jo)
-  - [Why I Switched From NEOVIM To VSCODE](https://www.youtube.com/watch?v=U1Mg8E70S6g)
-  - [Is This Vim Distribution Superior to VS Code?](https://www.youtube.com/watch?v=nQ2nvTD_46A)
+	- [How I Setup Neovim To Make It AMAZING in 2024: The Ultimate Guide](https://www.youtube.com/watch?v=6pAG3BHurdM)
+
   
 - **all neovim configuration**
     - [Learn Neovim The Practical Way](https://alpha2phi.medium.com/learn-neovim-the-practical-way-8818fcf4830f#545a)
 
 - **Neovim tutorial series**
   - [Teaching Neovim From Scratch To A Noob](https://www.youtube.com/watch?v=-ybCiHPWKNA)
+  - [Neovim](https://www.youtube.com/playlist?list=PLOIdWGSU_Wcp9_w8euHJaux8DEIBCvYGc)
 	- [Neovim from Scratch](https://www.youtube.com/playlist?list=PLhoH5vyxr6Qq41NFL4GvhFp-WLd5xzIzZ)
 	- [Neovim for Newbs. FREE NEOVIM COURSE](https://www.youtube.com/playlist?list=PLsz00TDipIffreIaUNk64KxTIkQaGguqn)
 	- [Neovim Configuration](https://www.youtube.com/playlist?list=PLsz00TDipIffxsNXSkskknolKShdbcALR)
@@ -51,6 +51,7 @@ docker run -it --rm -v $(pwd):/mnt busybox vi /mnt/vim-motion-practice.txt
 	- [The perfect Neovim setup for Rust.](https://www.youtube.com/watch?v=mh_EJhH49Ms)
 	- [Setting up Neovim for Java Development](https://www.youtube.com/watch?v=8q_VPqA-KLs)
 	- [Effective Neovim setup for web development towards 2024](https://www.youtube.com/watch?v=fFHlfbKVi30)
+	- [The Holy Grail of Neovim Git Integrations](https://www.youtube.com/watch?v=K-FKqXj8BAQ)
 	- [Automatically Execute *Anything* in Nvim](https://www.youtube.com/watch?v=9gUatBHuXE0)
 	- [Execute **anything** in neovim (now customizable)](https://www.youtube.com/watch?v=HlfjpstqXwE)
 	- [Neovim - Github Copilot | Setup & Demo | Copilot Creates a Simple Game By Itself | Official Plugin](https://www.youtube.com/watch?v=eMnZBaOs4vM&list=PLhoH5vyxr6Qo_5IoxqcQjHgBe77xD5-BP)
@@ -74,7 +75,7 @@ source ~/.zshrc
 ```
 
 ### Neovim chad
-- [Turn VIM into a full featured IDE with only one command](https://www.youtube.com/watch?v=Mtgo-nP_r8Y)
+- [Neovim](https://www.youtube.com/playlist?list=PL05iK6gnYad1sb4iQyqsim_Jc_peZdNXf)
 - [NeoVim with NVChad | The most beautiful editor for programming.](https://www.youtube.com/watch?v=Irm2WELYSps)
 - [Official documentation](https://nvchad.com/docs/quickstart/install)
 - [nvchad github](https://github.com/NvChad/NvChad)
@@ -82,6 +83,8 @@ source ~/.zshrc
 
 - **Shortcuts**
   - Use the Ctrl-^ or (Ctrl-6) shortcut to navigate back to the previously opened file stored in a buffer
+  - Use (ctrl + o) to go forward and (ctrl + i) to go back
+  - indentation on left and right (v to enter visual mode then press < or >) (but after pressing > it will indent the lines and unselect those, so we can use gb to restore last visual block)
   - leader key is space by default
   - space + c + h for cheetsheet opening and closing
   - only type space bar + wait for 2 sec it, it will suggest some next commands to type
@@ -106,7 +109,9 @@ source ~/.zshrc
     - Horizontal ( space + h )
     - vertical ( space + v )
     - to get out of terminal or jump to other windows from terminal (ctrl-x then ctrl-ww)
-
+  - others
+    - go to normal mode then press :Lazy it will open the LazyVim installer
+    - go to normal mode then enter :Mason oe :Lsp and hit tab it will suggest commad, it will work for other any command suggestion
 - **customization**
   - neovim configs present in `~/.config/nvim/lua/custom`
     - if you want to change config, plugins and options for neovim chad then change configuration in chadrc.lua
@@ -178,13 +183,18 @@ Sample go neovim config that I am reffering https://github.com/dreamsofcode-io/n
     :GoCmt
 
     :GoIfErr
-
-
-
+  5. Go to definition
+    gd -> go to defination
+    gD -> g + shift + d -> go to declaration
 
 ```
 
+### rusr config for neovim
+```
+1. first install lsp server for rust(rust-analyser)
+  either from mason or from rustup
 
+```
 
 
 # vim motion cheetsheet
