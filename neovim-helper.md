@@ -144,11 +144,12 @@ Sample go neovim config that I am reffering https://github.com/dreamsofcode-io/n
   Along with delve we need neovim dap (debug adapter protocoll) we will use nvim-dap-go plugin for that
   to install go grammar for neovim Treesitter use (:TSInstall go)
     <space> + db for debug point
+    <space> + dn => :DapStepOver for going to next line
+    <space> + dc => :DapContinue for go to the next debug point
     <space> + du for debug ui
     <space> + dgt for running test
     <space> + dgl for running last test
-    :DapStepOver for going to next line
-    :DapContinue for go to the next debug point
+    
 
 4. for extra capabilities we use gopher.nvim (https://github.com/olexsmir/gopher.nvim)
     nvim-dap is required
@@ -189,10 +190,27 @@ Sample go neovim config that I am reffering https://github.com/dreamsofcode-io/n
 
 ```
 
-### rusr config for neovim
+### rust config for neovim
 ```
 1. first install lsp server for rust(rust-analyser)
   either from mason or from rustup
+2. We can add formatting on save capabilities with rust-lang/rust.vim plugin
+  It will add autoformatting on save
+
+  copied all the config from https://github.com/dreamsofcode-io/neovim-rust
+
+  install llsb package for debug our code
+
+  This is incomplete
+
+```
+
+
+### Java config for neovim
+```
+1. first install jdtls,java-debug-adapter from mason
+2. :TSInstall Java -> install treesitter for java
+3. 
 
 ```
 
