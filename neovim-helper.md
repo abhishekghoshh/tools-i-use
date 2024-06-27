@@ -208,10 +208,17 @@ Sample go neovim config that I am reffering https://github.com/dreamsofcode-io/n
 
 ### Java config for neovim
 ```
+follow this medium blog and github for implementing java config
+LunarVim as a Java IDE -> https://medium.com/@chrisatmachine/lunarvim-as-a-java-ide-da65c4a77fb4
+https://github.com/LunarVim/starter.lvim/tree/java-ide (check the other branches as well, for other language config)
+
+
 1. first install jdtls,java-debug-adapter from mason
 2. :TSInstall Java -> install treesitter for java
 3. 
+Mason install jdtls, java-test and java-debug-adapter
 
+open java lua config and change the jdtls localation
 ```
 
 
@@ -265,8 +272,22 @@ ctrl + u to move a ½ page screen up.
 ctrl + d to move a ½ page screen down.
 
 
+Select a code block 
+click > for right shift
+click < for left shift
+
+If you are normal mode, with your cursor anywhere on the first line:
+
+>> will indent that line,
+4>> will indent all four lines,
+>3j will do the same thing in a different way (indent from this line to three lines down),
+>} will indent all of the lines until the end of the paragraph (i.e. to the first empty line, see :help object-motions), and
+>ap will indent all of the line
 
 
+hjkl -> left,down,up,right
+go to word in normal mode, and press * to go to next occurances of the word and we can use n and shift+n to go forward and backword for word occurance
+ciw to change in word,(delete the entire word) we can use . for to change the next occurance into same word
 
 
 #### Command Description	

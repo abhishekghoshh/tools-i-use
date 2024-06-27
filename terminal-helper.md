@@ -16,6 +16,12 @@
   - [typecraft](https://www.youtube.com/@typecraft_dev/playlists)
 
 
+## zsh
+- [This Zsh config is perhaps my favorite one yet.](https://www.youtube.com/watch?v=ud7YxC33Z3w)
+
+## zoxide
+- [zoxide has forever improved the way I navigate in the terminal.](https://www.youtube.com/watch?v=aghxkpyRVDY)
+
 ## fzf
 - [FZF Will CHANGE How You Work](https://www.youtube.com/watch?v=MvLQor1Ck3M)
 
